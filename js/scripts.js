@@ -52,15 +52,28 @@ Contact.prototype.fullName = function() {
 
 
 
-    // deleteContact function
+
 
 // UI logic
 
     // generate address book
     let addressBook = new AddressBook();
-
+    
     // displayContactDetails function
     // showContact function
     // attachContactListeners function
-
+    
     // (doc).ready interactivity
+$(document).ready(function() {
+  $("form#new-contact").submit(function(event) {
+    event.preventDefault();
+    const inputtedFirstName = $("input#new-first-name").val();
+    const inputtedLastName = $("input#new-last-name").val();
+    const inputtedPhoneNumber = $("input#new-phone-number").val();
+    let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
+    addressBook.addContact(newContact);
+    console.log(addressBook.contacts);
+  });
+});
+
+
